@@ -57,7 +57,7 @@ class SubscribeToChatBotController extends Controller
      */
     public function __invoke(Request $request)
     {
-        Telegram::
+
         $response = Telegram::getMe();
         return $this->success($response);
     }
