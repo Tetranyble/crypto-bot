@@ -1,0 +1,274 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Crypto Bot API Docs",
+        "description": "Crypto Bot Application Programme Interface",
+        "termsOfService": "THe api is subject to terms of services and maybe be changed without service notice",
+        "contact": {
+            "name": "Ekenekiso Leonard Ugbanawaji",
+            "url": "http://example.com",
+            "email": "senenerst@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://png.pngtree.com/element_pic/00/16/07/115783931601b5c.jpg"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://crypto-bot.test/api/v1",
+            "description": "Telegram Bot test environment"
+        }
+    ],
+    "paths": {
+        "/subscribe-chat": {
+            "post": {
+                "tags": [
+                    "Telegram Communication"
+                ],
+                "summary": "Subscribe to telegram.",
+                "description": "Subscribe to telegram chat.",
+                "operationId": "SubscribeToChatBotController::invoke",
+                "requestBody": {
+                    "description": "new user subscription",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubscribeBotRequest"
+                            },
+                            "example": {
+                                "user": "Ugbanawaji"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "message": "subscribed",
+                                    "status": true,
+                                    "code": 200,
+                                    "data": {
+                                        "channel": "Ugbanawaji"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SubscribeBotRequest": {
+                "properties": {
+                    "firstname": {
+                        "description": "The user first name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Ok.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Ok.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "201": {
+                "description": "Created.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Created.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "202": {
+                "description": "Accepted.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Created.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "204": {
+                "description": "No Content.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "No Content.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Bad Request.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Bad Request.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "Unauthenticated.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Unauthenticated.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "403": {
+                "description": "Forbidden.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Forbidden.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Resource Not Found.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Resource Not Found.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "413": {
+                "description": "Request Entity Too Large.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Request Entity Too Large.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "422": {
+                "description": "Unprocessable Entity.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Unprocessable Entity.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "423": {
+                "description": "Locked.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Locked.",
+                            "errors": []
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Server Error.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object"
+                        },
+                        "example": {
+                            "message": "Server Error.",
+                            "errors": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Telegram Communication",
+            "description": "Telegram external communication endpoints."
+        }
+    ]
+}
